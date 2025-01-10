@@ -1,0 +1,752 @@
+Analysis & Synthesis report for RegistradoraPratica
+Thu Jan 09 21:25:23 2025
+Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |RegistradoraPratica|CURRENT_STATE
+  9. User-Specified and Inferred Latches
+ 10. General Register Statistics
+ 11. Parameter Settings for Inferred Entity Instance: lpm_divide:Div0
+ 12. Parameter Settings for Inferred Entity Instance: lpm_divide:Div1
+ 13. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod1
+ 14. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod0
+ 15. Parameter Settings for Inferred Entity Instance: lpm_divide:Div2
+ 16. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod2
+ 17. Parameter Settings for Inferred Entity Instance: lpm_divide:Div3
+ 18. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod3
+ 19. Post-Synthesis Netlist Statistics for Top Partition
+ 20. Elapsed Time Per Partition
+ 21. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++------------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Thu Jan 09 21:25:23 2025       ;
+; Quartus Prime Version              ; 20.1.0 Build 711 06/05/2020 SJ Lite Edition ;
+; Revision Name                      ; RegistradoraPratica                         ;
+; Top-level Entity Name              ; RegistradoraPratica                         ;
+; Family                             ; MAX 10                                      ;
+; Total logic elements               ; 8,730                                       ;
+;     Total combinational functions  ; 8,730                                       ;
+;     Dedicated logic registers      ; 101                                         ;
+; Total registers                    ; 101                                         ;
+; Total pins                         ; 74                                          ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Total PLLs                         ; 0                                           ;
+; UFM blocks                         ; 0                                           ;
+; ADC blocks                         ; 0                                           ;
++------------------------------------+---------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                ;
++------------------------------------------------------------------+---------------------+---------------------+
+; Option                                                           ; Setting             ; Default Value       ;
++------------------------------------------------------------------+---------------------+---------------------+
+; Device                                                           ; 10M50DAF484C7G      ;                     ;
+; Top-level entity name                                            ; RegistradoraPratica ; RegistradoraPratica ;
+; Family name                                                      ; MAX 10              ; Cyclone V           ;
+; Use smart compilation                                            ; Off                 ; Off                 ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                  ; On                  ;
+; Enable compact report table                                      ; Off                 ; Off                 ;
+; Restructure Multiplexers                                         ; Auto                ; Auto                ;
+; Create Debugging Nodes for IP Cores                              ; Off                 ; Off                 ;
+; Preserve fewer node names                                        ; On                  ; On                  ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable              ; Enable              ;
+; Verilog Version                                                  ; Verilog_2001        ; Verilog_2001        ;
+; VHDL Version                                                     ; VHDL_1993           ; VHDL_1993           ;
+; State Machine Processing                                         ; Auto                ; Auto                ;
+; Safe State Machine                                               ; Off                 ; Off                 ;
+; Extract Verilog State Machines                                   ; On                  ; On                  ;
+; Extract VHDL State Machines                                      ; On                  ; On                  ;
+; Ignore Verilog initial constructs                                ; Off                 ; Off                 ;
+; Iteration limit for constant Verilog loops                       ; 5000                ; 5000                ;
+; Iteration limit for non-constant Verilog loops                   ; 250                 ; 250                 ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                  ; On                  ;
+; Infer RAMs from Raw Logic                                        ; On                  ; On                  ;
+; Parallel Synthesis                                               ; On                  ; On                  ;
+; DSP Block Balancing                                              ; Auto                ; Auto                ;
+; NOT Gate Push-Back                                               ; On                  ; On                  ;
+; Power-Up Don't Care                                              ; On                  ; On                  ;
+; Remove Redundant Logic Cells                                     ; Off                 ; Off                 ;
+; Remove Duplicate Registers                                       ; On                  ; On                  ;
+; Ignore CARRY Buffers                                             ; Off                 ; Off                 ;
+; Ignore CASCADE Buffers                                           ; Off                 ; Off                 ;
+; Ignore GLOBAL Buffers                                            ; Off                 ; Off                 ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                 ; Off                 ;
+; Ignore LCELL Buffers                                             ; Off                 ; Off                 ;
+; Ignore SOFT Buffers                                              ; On                  ; On                  ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                 ; Off                 ;
+; Optimization Technique                                           ; Balanced            ; Balanced            ;
+; Carry Chain Length                                               ; 70                  ; 70                  ;
+; Auto Carry Chains                                                ; On                  ; On                  ;
+; Auto Open-Drain Pins                                             ; On                  ; On                  ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                 ; Off                 ;
+; Auto ROM Replacement                                             ; On                  ; On                  ;
+; Auto RAM Replacement                                             ; On                  ; On                  ;
+; Auto DSP Block Replacement                                       ; On                  ; On                  ;
+; Auto Shift Register Replacement                                  ; Auto                ; Auto                ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto                ; Auto                ;
+; Auto Clock Enable Replacement                                    ; On                  ; On                  ;
+; Strict RAM Replacement                                           ; Off                 ; Off                 ;
+; Allow Synchronous Control Signals                                ; On                  ; On                  ;
+; Force Use of Synchronous Clear Signals                           ; Off                 ; Off                 ;
+; Auto RAM Block Balancing                                         ; On                  ; On                  ;
+; Auto RAM to Logic Cell Conversion                                ; Off                 ; Off                 ;
+; Auto Resource Sharing                                            ; Off                 ; Off                 ;
+; Allow Any RAM Size For Recognition                               ; Off                 ; Off                 ;
+; Allow Any ROM Size For Recognition                               ; Off                 ; Off                 ;
+; Allow Any Shift Register Size For Recognition                    ; Off                 ; Off                 ;
+; Use LogicLock Constraints during Resource Balancing              ; On                  ; On                  ;
+; Ignore translate_off and synthesis_off directives                ; Off                 ; Off                 ;
+; Timing-Driven Synthesis                                          ; On                  ; On                  ;
+; Report Parameter Settings                                        ; On                  ; On                  ;
+; Report Source Assignments                                        ; On                  ; On                  ;
+; Report Connectivity Checks                                       ; On                  ; On                  ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                 ; Off                 ;
+; Synchronization Register Chain Length                            ; 2                   ; 2                   ;
+; Power Optimization During Synthesis                              ; Normal compilation  ; Normal compilation  ;
+; HDL message level                                                ; Level2              ; Level2              ;
+; Suppress Register Optimization Related Messages                  ; Off                 ; Off                 ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000                ; 5000                ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000                ; 5000                ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                 ; 100                 ;
+; Clock MUX Protection                                             ; On                  ; On                  ;
+; Auto Gated Clock Conversion                                      ; Off                 ; Off                 ;
+; Block Design Naming                                              ; Auto                ; Auto                ;
+; SDC constraint protection                                        ; Off                 ; Off                 ;
+; Synthesis Effort                                                 ; Auto                ; Auto                ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                  ; On                  ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                 ; Off                 ;
+; Analysis & Synthesis Message Level                               ; Medium              ; Medium              ;
+; Disable Register Merging Across Hierarchies                      ; Auto                ; Auto                ;
+; Resource Aware Inference For Block RAM                           ; On                  ; On                  ;
++------------------------------------------------------------------+---------------------+---------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 2           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 2           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
++----------------------------+-------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                  ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                              ; Library ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------------------+---------+
+; RegistradoraPratica.vhd          ; yes             ; User VHDL File               ; C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd ;         ;
+; Bcd_7seg.vhd                     ; yes             ; User VHDL File               ; C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/Bcd_7seg.vhd            ;         ;
+; lpm_divide.tdf                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/lpm_divide.tdf                     ;         ;
+; abs_divider.inc                  ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/abs_divider.inc                    ;         ;
+; sign_div_unsign.inc              ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/sign_div_unsign.inc                ;         ;
+; aglobal201.inc                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/aglobal201.inc                     ;         ;
+; db/lpm_divide_hbo.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/db/lpm_divide_hbo.tdf   ;         ;
+; db/abs_divider_mbg.tdf           ; yes             ; Auto-Generated Megafunction  ; C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/db/abs_divider_mbg.tdf  ;         ;
+; db/alt_u_div_0ie.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/db/alt_u_div_0ie.tdf    ;         ;
+; db/add_sub_t3c.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/db/add_sub_t3c.tdf      ;         ;
+; db/add_sub_u3c.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/db/add_sub_u3c.tdf      ;         ;
+; db/lpm_abs_q99.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/db/lpm_abs_q99.tdf      ;         ;
+; db/lpm_abs_8b9.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/db/lpm_abs_8b9.tdf      ;         ;
+; db/lpm_divide_fbo.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/db/lpm_divide_fbo.tdf   ;         ;
+; db/abs_divider_kbg.tdf           ; yes             ; Auto-Generated Megafunction  ; C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/db/abs_divider_kbg.tdf  ;         ;
+; db/alt_u_div_she.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/db/alt_u_div_she.tdf    ;         ;
+; db/lpm_abs_o99.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/db/lpm_abs_o99.tdf      ;         ;
+; db/lpm_divide_25o.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/db/lpm_divide_25o.tdf   ;         ;
+; db/abs_divider_4dg.tdf           ; yes             ; Auto-Generated Megafunction  ; C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/db/abs_divider_4dg.tdf  ;         ;
+; db/alt_u_div_ske.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/db/alt_u_div_ske.tdf    ;         ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                     ;
++---------------------------------------------+-------------------+
+; Resource                                    ; Usage             ;
++---------------------------------------------+-------------------+
+; Estimated Total logic elements              ; 8,730             ;
+;                                             ;                   ;
+; Total combinational functions               ; 8730              ;
+; Logic element usage by number of LUT inputs ;                   ;
+;     -- 4 input functions                    ; 2670              ;
+;     -- 3 input functions                    ; 2740              ;
+;     -- <=2 input functions                  ; 3320              ;
+;                                             ;                   ;
+; Logic elements by mode                      ;                   ;
+;     -- normal mode                          ; 5880              ;
+;     -- arithmetic mode                      ; 2850              ;
+;                                             ;                   ;
+; Total registers                             ; 101               ;
+;     -- Dedicated logic registers            ; 101               ;
+;     -- I/O registers                        ; 0                 ;
+;                                             ;                   ;
+; I/O pins                                    ; 74                ;
+;                                             ;                   ;
+; Embedded Multiplier 9-bit elements          ; 0                 ;
+;                                             ;                   ;
+; Maximum fan-out node                        ; current_timer[31] ;
+; Maximum fan-out                             ; 228               ;
+; Total fan-out                               ; 25448             ;
+; Average fan-out                             ; 2.83              ;
++---------------------------------------------+-------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                                 ;
++---------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+; Compilation Hierarchy Node            ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                                                                               ; Entity Name         ; Library Name ;
++---------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+; |RegistradoraPratica                  ; 8730 (461)          ; 101 (101)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 74   ; 0            ; 0          ; |RegistradoraPratica                                                                                              ; RegistradoraPratica ; work         ;
+;    |Bcd_7seg:inst_Bcd7seg1|           ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|Bcd_7seg:inst_Bcd7seg1                                                                       ; Bcd_7seg            ; work         ;
+;    |Bcd_7seg:inst_Bcd7seg2|           ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|Bcd_7seg:inst_Bcd7seg2                                                                       ; Bcd_7seg            ; work         ;
+;    |Bcd_7seg:inst_Bcd7seg3|           ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|Bcd_7seg:inst_Bcd7seg3                                                                       ; Bcd_7seg            ; work         ;
+;    |Bcd_7seg:inst_Bcd7seg4|           ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|Bcd_7seg:inst_Bcd7seg4                                                                       ; Bcd_7seg            ; work         ;
+;    |Bcd_7seg:inst_Bcd7segvalue1|      ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|Bcd_7seg:inst_Bcd7segvalue1                                                                  ; Bcd_7seg            ; work         ;
+;    |Bcd_7seg:inst_Bcd7segvalue2|      ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|Bcd_7seg:inst_Bcd7segvalue2                                                                  ; Bcd_7seg            ; work         ;
+;    |lpm_divide:Div0|                  ; 662 (0)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|lpm_divide:Div0                                                                              ; lpm_divide          ; work         ;
+;       |lpm_divide_hbo:auto_generated| ; 662 (0)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|lpm_divide:Div0|lpm_divide_hbo:auto_generated                                                ; lpm_divide_hbo      ; work         ;
+;          |abs_divider_mbg:divider|    ; 662 (60)            ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|lpm_divide:Div0|lpm_divide_hbo:auto_generated|abs_divider_mbg:divider                        ; abs_divider_mbg     ; work         ;
+;             |alt_u_div_0ie:divider|   ; 571 (571)           ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|lpm_divide:Div0|lpm_divide_hbo:auto_generated|abs_divider_mbg:divider|alt_u_div_0ie:divider  ; alt_u_div_0ie       ; work         ;
+;             |lpm_abs_8b9:my_abs_num|  ; 31 (31)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|lpm_divide:Div0|lpm_divide_hbo:auto_generated|abs_divider_mbg:divider|lpm_abs_8b9:my_abs_num ; lpm_abs_8b9         ; work         ;
+;    |lpm_divide:Div1|                  ; 450 (0)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|lpm_divide:Div1                                                                              ; lpm_divide          ; work         ;
+;       |lpm_divide_fbo:auto_generated| ; 450 (0)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|lpm_divide:Div1|lpm_divide_fbo:auto_generated                                                ; lpm_divide_fbo      ; work         ;
+;          |abs_divider_kbg:divider|    ; 450 (8)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|lpm_divide:Div1|lpm_divide_fbo:auto_generated|abs_divider_kbg:divider                        ; abs_divider_kbg     ; work         ;
+;             |alt_u_div_she:divider|   ; 405 (405)           ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|lpm_divide:Div1|lpm_divide_fbo:auto_generated|abs_divider_kbg:divider|alt_u_div_she:divider  ; alt_u_div_she       ; work         ;
+;             |lpm_abs_8b9:my_abs_num|  ; 37 (37)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|lpm_divide:Div1|lpm_divide_fbo:auto_generated|abs_divider_kbg:divider|lpm_abs_8b9:my_abs_num ; lpm_abs_8b9         ; work         ;
+;    |lpm_divide:Div2|                  ; 495 (0)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|lpm_divide:Div2                                                                              ; lpm_divide          ; work         ;
+;       |lpm_divide_fbo:auto_generated| ; 495 (0)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|lpm_divide:Div2|lpm_divide_fbo:auto_generated                                                ; lpm_divide_fbo      ; work         ;
+;          |abs_divider_kbg:divider|    ; 495 (8)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|lpm_divide:Div2|lpm_divide_fbo:auto_generated|abs_divider_kbg:divider                        ; abs_divider_kbg     ; work         ;
+;             |alt_u_div_she:divider|   ; 449 (449)           ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|lpm_divide:Div2|lpm_divide_fbo:auto_generated|abs_divider_kbg:divider|alt_u_div_she:divider  ; alt_u_div_she       ; work         ;
+;             |lpm_abs_8b9:my_abs_num|  ; 38 (38)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|lpm_divide:Div2|lpm_divide_fbo:auto_generated|abs_divider_kbg:divider|lpm_abs_8b9:my_abs_num ; lpm_abs_8b9         ; work         ;
+;    |lpm_divide:Div3|                  ; 486 (0)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|lpm_divide:Div3                                                                              ; lpm_divide          ; work         ;
+;       |lpm_divide_fbo:auto_generated| ; 486 (0)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|lpm_divide:Div3|lpm_divide_fbo:auto_generated                                                ; lpm_divide_fbo      ; work         ;
+;          |abs_divider_kbg:divider|    ; 486 (8)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|lpm_divide:Div3|lpm_divide_fbo:auto_generated|abs_divider_kbg:divider                        ; abs_divider_kbg     ; work         ;
+;             |alt_u_div_she:divider|   ; 449 (449)           ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|lpm_divide:Div3|lpm_divide_fbo:auto_generated|abs_divider_kbg:divider|alt_u_div_she:divider  ; alt_u_div_she       ; work         ;
+;             |lpm_abs_8b9:my_abs_num|  ; 29 (29)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|lpm_divide:Div3|lpm_divide_fbo:auto_generated|abs_divider_kbg:divider|lpm_abs_8b9:my_abs_num ; lpm_abs_8b9         ; work         ;
+;    |lpm_divide:Mod0|                  ; 1613 (0)            ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|lpm_divide:Mod0                                                                              ; lpm_divide          ; work         ;
+;       |lpm_divide_25o:auto_generated| ; 1613 (0)            ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|lpm_divide:Mod0|lpm_divide_25o:auto_generated                                                ; lpm_divide_25o      ; work         ;
+;          |abs_divider_4dg:divider|    ; 1613 (66)           ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|lpm_divide:Mod0|lpm_divide_25o:auto_generated|abs_divider_4dg:divider                        ; abs_divider_4dg     ; work         ;
+;             |alt_u_div_ske:divider|   ; 1538 (1538)         ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|lpm_divide:Mod0|lpm_divide_25o:auto_generated|abs_divider_4dg:divider|alt_u_div_ske:divider  ; alt_u_div_ske       ; work         ;
+;             |lpm_abs_8b9:my_abs_num|  ; 9 (9)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|lpm_divide:Mod0|lpm_divide_25o:auto_generated|abs_divider_4dg:divider|lpm_abs_8b9:my_abs_num ; lpm_abs_8b9         ; work         ;
+;    |lpm_divide:Mod1|                  ; 1474 (0)            ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|lpm_divide:Mod1                                                                              ; lpm_divide          ; work         ;
+;       |lpm_divide_25o:auto_generated| ; 1474 (0)            ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|lpm_divide:Mod1|lpm_divide_25o:auto_generated                                                ; lpm_divide_25o      ; work         ;
+;          |abs_divider_4dg:divider|    ; 1474 (8)            ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|lpm_divide:Mod1|lpm_divide_25o:auto_generated|abs_divider_4dg:divider                        ; abs_divider_4dg     ; work         ;
+;             |alt_u_div_ske:divider|   ; 1463 (1463)         ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|lpm_divide:Mod1|lpm_divide_25o:auto_generated|abs_divider_4dg:divider|alt_u_div_ske:divider  ; alt_u_div_ske       ; work         ;
+;             |lpm_abs_8b9:my_abs_num|  ; 3 (3)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|lpm_divide:Mod1|lpm_divide_25o:auto_generated|abs_divider_4dg:divider|lpm_abs_8b9:my_abs_num ; lpm_abs_8b9         ; work         ;
+;    |lpm_divide:Mod2|                  ; 1527 (0)            ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|lpm_divide:Mod2                                                                              ; lpm_divide          ; work         ;
+;       |lpm_divide_25o:auto_generated| ; 1527 (0)            ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|lpm_divide:Mod2|lpm_divide_25o:auto_generated                                                ; lpm_divide_25o      ; work         ;
+;          |abs_divider_4dg:divider|    ; 1527 (8)            ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|lpm_divide:Mod2|lpm_divide_25o:auto_generated|abs_divider_4dg:divider                        ; abs_divider_4dg     ; work         ;
+;             |alt_u_div_ske:divider|   ; 1511 (1511)         ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|lpm_divide:Mod2|lpm_divide_25o:auto_generated|abs_divider_4dg:divider|alt_u_div_ske:divider  ; alt_u_div_ske       ; work         ;
+;             |lpm_abs_8b9:my_abs_num|  ; 8 (8)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|lpm_divide:Mod2|lpm_divide_25o:auto_generated|abs_divider_4dg:divider|lpm_abs_8b9:my_abs_num ; lpm_abs_8b9         ; work         ;
+;    |lpm_divide:Mod3|                  ; 1520 (0)            ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|lpm_divide:Mod3                                                                              ; lpm_divide          ; work         ;
+;       |lpm_divide_25o:auto_generated| ; 1520 (0)            ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|lpm_divide:Mod3|lpm_divide_25o:auto_generated                                                ; lpm_divide_25o      ; work         ;
+;          |abs_divider_4dg:divider|    ; 1520 (8)            ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|lpm_divide:Mod3|lpm_divide_25o:auto_generated|abs_divider_4dg:divider                        ; abs_divider_4dg     ; work         ;
+;             |alt_u_div_ske:divider|   ; 1510 (1510)         ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|lpm_divide:Mod3|lpm_divide_25o:auto_generated|abs_divider_4dg:divider|alt_u_div_ske:divider  ; alt_u_div_ske       ; work         ;
+;             |lpm_abs_8b9:my_abs_num|  ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RegistradoraPratica|lpm_divide:Mod3|lpm_divide_25o:auto_generated|abs_divider_4dg:divider|lpm_abs_8b9:my_abs_num ; lpm_abs_8b9         ; work         ;
++---------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------------------+
+; State Machine - |RegistradoraPratica|CURRENT_STATE                                                             ;
++------------------------------+------------------------------+-----------------------------+--------------------+
+; Name                         ; CURRENT_STATE.UPDATE_DISPLAY ; CURRENT_STATE.PROCESS_INPUT ; CURRENT_STATE.IDLE ;
++------------------------------+------------------------------+-----------------------------+--------------------+
+; CURRENT_STATE.IDLE           ; 0                            ; 0                           ; 0                  ;
+; CURRENT_STATE.PROCESS_INPUT  ; 0                            ; 1                           ; 1                  ;
+; CURRENT_STATE.UPDATE_DISPLAY ; 1                            ; 0                           ; 1                  ;
++------------------------------+------------------------------+-----------------------------+--------------------+
+
+
++----------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                ;
++-----------------------------------------------------+---------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal ; Free of Timing Hazards ;
++-----------------------------------------------------+---------------------+------------------------+
+; reg_total[31]                                       ; reg_total[7]        ; yes                    ;
+; reg_total[0]                                        ; reg_total[7]        ; yes                    ;
+; reg_total[1]                                        ; reg_total[7]        ; yes                    ;
+; reg_total[2]                                        ; reg_total[7]        ; yes                    ;
+; reg_total[3]                                        ; reg_total[7]        ; yes                    ;
+; reg_total[4]                                        ; reg_total[7]        ; yes                    ;
+; reg_total[5]                                        ; reg_total[7]        ; yes                    ;
+; reg_total[6]                                        ; reg_total[7]        ; yes                    ;
+; reg_total[7]                                        ; reg_total[7]        ; yes                    ;
+; reg_total[8]                                        ; reg_total[7]        ; yes                    ;
+; reg_total[9]                                        ; reg_total[7]        ; yes                    ;
+; reg_total[10]                                       ; reg_total[7]        ; yes                    ;
+; reg_total[11]                                       ; reg_total[7]        ; yes                    ;
+; reg_total[12]                                       ; reg_total[7]        ; yes                    ;
+; reg_total[13]                                       ; reg_total[7]        ; yes                    ;
+; reg_total[14]                                       ; reg_total[7]        ; yes                    ;
+; reg_total[15]                                       ; reg_total[7]        ; yes                    ;
+; reg_total[16]                                       ; reg_total[7]        ; yes                    ;
+; reg_total[17]                                       ; reg_total[7]        ; yes                    ;
+; reg_total[18]                                       ; reg_total[7]        ; yes                    ;
+; reg_total[19]                                       ; reg_total[7]        ; yes                    ;
+; reg_total[20]                                       ; reg_total[7]        ; yes                    ;
+; reg_total[21]                                       ; reg_total[7]        ; yes                    ;
+; reg_total[22]                                       ; reg_total[7]        ; yes                    ;
+; reg_total[23]                                       ; reg_total[7]        ; yes                    ;
+; reg_total[24]                                       ; reg_total[7]        ; yes                    ;
+; reg_total[25]                                       ; reg_total[7]        ; yes                    ;
+; reg_total[26]                                       ; reg_total[7]        ; yes                    ;
+; reg_total[27]                                       ; reg_total[7]        ; yes                    ;
+; reg_total[28]                                       ; reg_total[7]        ; yes                    ;
+; reg_total[29]                                       ; reg_total[7]        ; yes                    ;
+; reg_total[30]                                       ; reg_total[7]        ; yes                    ;
+; NEXT_STATE.PROCESS_INPUT_1239                       ; RESET               ; yes                    ;
+; last_operation[0]                                   ; last_operation[1]   ; yes                    ;
+; last_operation[1]                                   ; last_operation[1]   ; yes                    ;
+; last_valor[0]                                       ; last_operation[1]   ; yes                    ;
+; last_valor[1]                                       ; last_operation[1]   ; yes                    ;
+; last_valor[2]                                       ; last_operation[1]   ; yes                    ;
+; last_valor[3]                                       ; last_operation[1]   ; yes                    ;
+; NEXT_STATE.IDLE_1246                                ; RESET               ; yes                    ;
+; NEXT_STATE.UPDATE_DISPLAY_1232                      ; RESET               ; yes                    ;
+; Number of user-specified and inferred latches = 41  ;                     ;                        ;
++-----------------------------------------------------+---------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 101   ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 35    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Div0 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 32             ; Untyped                ;
+; LPM_WIDTHD             ; 7              ; Untyped                ;
+; LPM_NREPRESENTATION    ; SIGNED         ; Untyped                ;
+; LPM_DREPRESENTATION    ; SIGNED         ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; FALSE          ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_hbo ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Div1 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 32             ; Untyped                ;
+; LPM_WIDTHD             ; 5              ; Untyped                ;
+; LPM_NREPRESENTATION    ; SIGNED         ; Untyped                ;
+; LPM_DREPRESENTATION    ; SIGNED         ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; FALSE          ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_fbo ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Mod1 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 32             ; Untyped                ;
+; LPM_WIDTHD             ; 32             ; Untyped                ;
+; LPM_NREPRESENTATION    ; SIGNED         ; Untyped                ;
+; LPM_DREPRESENTATION    ; SIGNED         ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; FALSE          ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_25o ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Mod0 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 32             ; Untyped                ;
+; LPM_WIDTHD             ; 32             ; Untyped                ;
+; LPM_NREPRESENTATION    ; SIGNED         ; Untyped                ;
+; LPM_DREPRESENTATION    ; SIGNED         ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; FALSE          ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_25o ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Div2 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 32             ; Untyped                ;
+; LPM_WIDTHD             ; 5              ; Untyped                ;
+; LPM_NREPRESENTATION    ; SIGNED         ; Untyped                ;
+; LPM_DREPRESENTATION    ; SIGNED         ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; FALSE          ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_fbo ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Mod2 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 32             ; Untyped                ;
+; LPM_WIDTHD             ; 32             ; Untyped                ;
+; LPM_NREPRESENTATION    ; SIGNED         ; Untyped                ;
+; LPM_DREPRESENTATION    ; SIGNED         ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; FALSE          ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_25o ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Div3 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 32             ; Untyped                ;
+; LPM_WIDTHD             ; 5              ; Untyped                ;
+; LPM_NREPRESENTATION    ; SIGNED         ; Untyped                ;
+; LPM_DREPRESENTATION    ; SIGNED         ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; FALSE          ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_fbo ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Mod3 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 32             ; Untyped                ;
+; LPM_WIDTHD             ; 32             ; Untyped                ;
+; LPM_NREPRESENTATION    ; SIGNED         ; Untyped                ;
+; LPM_DREPRESENTATION    ; SIGNED         ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; FALSE          ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_25o ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 74                          ;
+; cycloneiii_ff         ; 101                         ;
+;     CLR               ; 35                          ;
+;     plain             ; 66                          ;
+; cycloneiii_lcell_comb ; 8736                        ;
+;     arith             ; 2850                        ;
+;         1 data inputs ; 6                           ;
+;         2 data inputs ; 182                         ;
+;         3 data inputs ; 2662                        ;
+;     normal            ; 5886                        ;
+;         0 data inputs ; 227                         ;
+;         1 data inputs ; 15                          ;
+;         2 data inputs ; 2896                        ;
+;         3 data inputs ; 78                          ;
+;         4 data inputs ; 2670                        ;
+;                       ;                             ;
+; Max LUT depth         ; 245.40                      ;
+; Average LUT depth     ; 187.34                      ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:11     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
+    Info: Processing started: Thu Jan 09 21:24:59 2025
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off RegistradoraPratica -c RegistradoraPratica
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file registradorapratica.vhd
+    Info (12022): Found design unit 1: RegistradoraPratica-Behavioral File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 23
+    Info (12023): Found entity 1: RegistradoraPratica File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file bcd_7seg.vhd
+    Info (12022): Found design unit 1: Bcd_7seg-with_select_bcd7seg File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/Bcd_7seg.vhd Line: 13
+    Info (12023): Found entity 1: Bcd_7seg File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/Bcd_7seg.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file registradorapratica_tb.vhd
+    Info (12022): Found design unit 1: RegistradoraPratica_tb-Behavioral File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica_tb.vhd Line: 9
+    Info (12023): Found entity 1: RegistradoraPratica_tb File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica_tb.vhd Line: 6
+Info (12127): Elaborating entity "RegistradoraPratica" for the top level hierarchy
+Warning (10492): VHDL Process Statement warning at RegistradoraPratica.vhd(100): signal "current_timer" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 100
+Warning (10492): VHDL Process Statement warning at RegistradoraPratica.vhd(122): signal "RESET" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 122
+Warning (10492): VHDL Process Statement warning at RegistradoraPratica.vhd(130): signal "operation" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 130
+Warning (10492): VHDL Process Statement warning at RegistradoraPratica.vhd(130): signal "last_operation" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 130
+Warning (10492): VHDL Process Statement warning at RegistradoraPratica.vhd(130): signal "last_valor" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 130
+Warning (10492): VHDL Process Statement warning at RegistradoraPratica.vhd(140): signal "operation" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 140
+Warning (10492): VHDL Process Statement warning at RegistradoraPratica.vhd(141): signal "reg_total" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 141
+Warning (10492): VHDL Process Statement warning at RegistradoraPratica.vhd(142): signal "operation" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 142
+Warning (10492): VHDL Process Statement warning at RegistradoraPratica.vhd(143): signal "reg_total" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 143
+Warning (10492): VHDL Process Statement warning at RegistradoraPratica.vhd(146): signal "operation" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 146
+Warning (10631): VHDL Process Statement warning at RegistradoraPratica.vhd(116): inferring latch(es) for signal or variable "reg_total", which holds its previous value in one or more paths through the process File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Warning (10631): VHDL Process Statement warning at RegistradoraPratica.vhd(116): inferring latch(es) for signal or variable "NEXT_STATE", which holds its previous value in one or more paths through the process File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Warning (10631): VHDL Process Statement warning at RegistradoraPratica.vhd(116): inferring latch(es) for signal or variable "last_operation", which holds its previous value in one or more paths through the process File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Warning (10631): VHDL Process Statement warning at RegistradoraPratica.vhd(116): inferring latch(es) for signal or variable "last_valor", which holds its previous value in one or more paths through the process File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Info (10041): Inferred latch for "last_valor[0]" at RegistradoraPratica.vhd(116) File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Info (10041): Inferred latch for "last_valor[1]" at RegistradoraPratica.vhd(116) File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Info (10041): Inferred latch for "last_valor[2]" at RegistradoraPratica.vhd(116) File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Info (10041): Inferred latch for "last_valor[3]" at RegistradoraPratica.vhd(116) File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Info (10041): Inferred latch for "last_operation[0]" at RegistradoraPratica.vhd(116) File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Info (10041): Inferred latch for "last_operation[1]" at RegistradoraPratica.vhd(116) File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Info (10041): Inferred latch for "NEXT_STATE.UPDATE_DISPLAY" at RegistradoraPratica.vhd(116) File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Info (10041): Inferred latch for "NEXT_STATE.PROCESS_INPUT" at RegistradoraPratica.vhd(116) File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Info (10041): Inferred latch for "NEXT_STATE.IDLE" at RegistradoraPratica.vhd(116) File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Info (10041): Inferred latch for "reg_total[0]" at RegistradoraPratica.vhd(116) File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Info (10041): Inferred latch for "reg_total[1]" at RegistradoraPratica.vhd(116) File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Info (10041): Inferred latch for "reg_total[2]" at RegistradoraPratica.vhd(116) File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Info (10041): Inferred latch for "reg_total[3]" at RegistradoraPratica.vhd(116) File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Info (10041): Inferred latch for "reg_total[4]" at RegistradoraPratica.vhd(116) File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Info (10041): Inferred latch for "reg_total[5]" at RegistradoraPratica.vhd(116) File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Info (10041): Inferred latch for "reg_total[6]" at RegistradoraPratica.vhd(116) File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Info (10041): Inferred latch for "reg_total[7]" at RegistradoraPratica.vhd(116) File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Info (10041): Inferred latch for "reg_total[8]" at RegistradoraPratica.vhd(116) File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Info (10041): Inferred latch for "reg_total[9]" at RegistradoraPratica.vhd(116) File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Info (10041): Inferred latch for "reg_total[10]" at RegistradoraPratica.vhd(116) File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Info (10041): Inferred latch for "reg_total[11]" at RegistradoraPratica.vhd(116) File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Info (10041): Inferred latch for "reg_total[12]" at RegistradoraPratica.vhd(116) File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Info (10041): Inferred latch for "reg_total[13]" at RegistradoraPratica.vhd(116) File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Info (10041): Inferred latch for "reg_total[14]" at RegistradoraPratica.vhd(116) File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Info (10041): Inferred latch for "reg_total[15]" at RegistradoraPratica.vhd(116) File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Info (10041): Inferred latch for "reg_total[16]" at RegistradoraPratica.vhd(116) File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Info (10041): Inferred latch for "reg_total[17]" at RegistradoraPratica.vhd(116) File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Info (10041): Inferred latch for "reg_total[18]" at RegistradoraPratica.vhd(116) File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Info (10041): Inferred latch for "reg_total[19]" at RegistradoraPratica.vhd(116) File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Info (10041): Inferred latch for "reg_total[20]" at RegistradoraPratica.vhd(116) File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Info (10041): Inferred latch for "reg_total[21]" at RegistradoraPratica.vhd(116) File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Info (10041): Inferred latch for "reg_total[22]" at RegistradoraPratica.vhd(116) File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Info (10041): Inferred latch for "reg_total[23]" at RegistradoraPratica.vhd(116) File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Info (10041): Inferred latch for "reg_total[24]" at RegistradoraPratica.vhd(116) File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Info (10041): Inferred latch for "reg_total[25]" at RegistradoraPratica.vhd(116) File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Info (10041): Inferred latch for "reg_total[26]" at RegistradoraPratica.vhd(116) File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Info (10041): Inferred latch for "reg_total[27]" at RegistradoraPratica.vhd(116) File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Info (10041): Inferred latch for "reg_total[28]" at RegistradoraPratica.vhd(116) File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Info (10041): Inferred latch for "reg_total[29]" at RegistradoraPratica.vhd(116) File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Info (10041): Inferred latch for "reg_total[30]" at RegistradoraPratica.vhd(116) File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Info (10041): Inferred latch for "reg_total[31]" at RegistradoraPratica.vhd(116) File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 116
+Info (12128): Elaborating entity "Bcd_7seg" for hierarchy "Bcd_7seg:inst_Bcd7seg1" File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 196
+Info (278001): Inferred 8 megafunctions from design logic
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div0" File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 167
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div1" File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 171
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod1" File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 172
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod0" File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 168
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div2" File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 173
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod2" File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 174
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div3" File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 186
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod3" File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 187
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Div0" File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 167
+Info (12133): Instantiated megafunction "lpm_divide:Div0" with the following parameter: File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 167
+    Info (12134): Parameter "LPM_WIDTHN" = "32"
+    Info (12134): Parameter "LPM_WIDTHD" = "7"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_HINT" = "LPM_REMAINDERPOSITIVE=FALSE"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_hbo.tdf
+    Info (12023): Found entity 1: lpm_divide_hbo File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/db/lpm_divide_hbo.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/abs_divider_mbg.tdf
+    Info (12023): Found entity 1: abs_divider_mbg File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/db/abs_divider_mbg.tdf Line: 29
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_0ie.tdf
+    Info (12023): Found entity 1: alt_u_div_0ie File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/db/alt_u_div_0ie.tdf Line: 27
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_t3c.tdf
+    Info (12023): Found entity 1: add_sub_t3c File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/db/add_sub_t3c.tdf Line: 23
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_u3c.tdf
+    Info (12023): Found entity 1: add_sub_u3c File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/db/add_sub_u3c.tdf Line: 23
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_abs_q99.tdf
+    Info (12023): Found entity 1: lpm_abs_q99 File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/db/lpm_abs_q99.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_abs_8b9.tdf
+    Info (12023): Found entity 1: lpm_abs_8b9 File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/db/lpm_abs_8b9.tdf Line: 25
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Div1" File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 171
+Info (12133): Instantiated megafunction "lpm_divide:Div1" with the following parameter: File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 171
+    Info (12134): Parameter "LPM_WIDTHN" = "32"
+    Info (12134): Parameter "LPM_WIDTHD" = "5"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_HINT" = "LPM_REMAINDERPOSITIVE=FALSE"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_fbo.tdf
+    Info (12023): Found entity 1: lpm_divide_fbo File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/db/lpm_divide_fbo.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/abs_divider_kbg.tdf
+    Info (12023): Found entity 1: abs_divider_kbg File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/db/abs_divider_kbg.tdf Line: 29
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_she.tdf
+    Info (12023): Found entity 1: alt_u_div_she File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/db/alt_u_div_she.tdf Line: 27
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_abs_o99.tdf
+    Info (12023): Found entity 1: lpm_abs_o99 File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/db/lpm_abs_o99.tdf Line: 25
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod1" File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 172
+Info (12133): Instantiated megafunction "lpm_divide:Mod1" with the following parameter: File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 172
+    Info (12134): Parameter "LPM_WIDTHN" = "32"
+    Info (12134): Parameter "LPM_WIDTHD" = "32"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_HINT" = "LPM_REMAINDERPOSITIVE=FALSE"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_25o.tdf
+    Info (12023): Found entity 1: lpm_divide_25o File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/db/lpm_divide_25o.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/abs_divider_4dg.tdf
+    Info (12023): Found entity 1: abs_divider_4dg File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/db/abs_divider_4dg.tdf Line: 27
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_ske.tdf
+    Info (12023): Found entity 1: alt_u_div_ske File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/db/alt_u_div_ske.tdf Line: 27
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod0" File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 168
+Info (12133): Instantiated megafunction "lpm_divide:Mod0" with the following parameter: File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 168
+    Info (12134): Parameter "LPM_WIDTHN" = "32"
+    Info (12134): Parameter "LPM_WIDTHD" = "32"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_HINT" = "LPM_REMAINDERPOSITIVE=FALSE"
+Info (13014): Ignored 244 buffer(s)
+    Info (13016): Ignored 244 CARRY_SUM buffer(s)
+Warning (13004): Presettable and clearable registers converted to equivalent circuits with latches. Registers power-up to an undefined state, and DEVCLRn places the registers in an undefined state.
+    Warning (13310): Register "current_timer[4]" is converted into an equivalent circuit using register "current_timer[4]~_emulated" and latch "current_timer[4]~1" File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 95
+    Warning (13310): Register "current_timer[6]" is converted into an equivalent circuit using register "current_timer[6]~_emulated" and latch "current_timer[4]~1" File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 95
+    Warning (13310): Register "current_timer[7]" is converted into an equivalent circuit using register "current_timer[7]~_emulated" and latch "current_timer[4]~1" File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 95
+    Warning (13310): Register "current_timer[9]" is converted into an equivalent circuit using register "current_timer[9]~_emulated" and latch "current_timer[4]~1" File: C:/Users/Aluno/Downloads/Registradoras_L3_ACC/RegistradoraPratica/RegistradoraPratica.vhd Line: 95
+Info (286030): Timing-Driven Synthesis is running
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 8806 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 8 input pins
+    Info (21059): Implemented 66 output pins
+    Info (21061): Implemented 8732 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 20 warnings
+    Info: Peak virtual memory: 737 megabytes
+    Info: Processing ended: Thu Jan 09 21:25:23 2025
+    Info: Elapsed time: 00:00:24
+    Info: Total CPU time (on all processors): 00:00:38
+
+

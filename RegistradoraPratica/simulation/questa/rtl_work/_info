@@ -1,0 +1,131 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dE:/RegistradoraPratica/simulation/questa
+Ebcd_7seg
+Z1 w1732298404
+Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z3 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+R0
+Z4 8E:/RegistradoraPratica/Bcd_7seg.vhd
+Z5 FE:/RegistradoraPratica/Bcd_7seg.vhd
+l0
+L6
+VF7EmDPKbz?NSdVg5I?j9z1
+!s100 FU6UnbdI[_@HhS<b8FY:A1
+Z6 OV;C;10.5b;63
+31
+Z7 !s110 1736332232
+!i10b 1
+Z8 !s108 1736332232.000000
+Z9 !s90 -reportprogress|300|-93|-work|work|E:/RegistradoraPratica/Bcd_7seg.vhd|
+Z10 !s107 E:/RegistradoraPratica/Bcd_7seg.vhd|
+!i113 1
+Z11 o-93 -work work
+Z12 tExplicit 1 CvgOpt 0
+Awith_select_bcd7seg
+R2
+R3
+DEx4 work 8 bcd_7seg 0 22 F7EmDPKbz?NSdVg5I?j9z1
+l14
+L13
+Vmf;3ABe<zQV[S8MicoHdF0
+!s100 3lf7LLD7fo_iGNIkM`1UU3
+R6
+31
+R7
+!i10b 1
+R8
+R9
+R10
+!i113 1
+R11
+R12
+Eregistradorapratica
+Z13 w1734682158
+Z14 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+R2
+R3
+R0
+Z15 8E:/RegistradoraPratica/RegistradoraPratica.vhd
+Z16 FE:/RegistradoraPratica/RegistradoraPratica.vhd
+l0
+L6
+VGVm5R1X<0G@[??>D<FO1W3
+!s100 L[oMTOT5bBg@V7EBUeNPG0
+R6
+31
+Z17 !s110 1736332230
+!i10b 1
+Z18 !s108 1736332229.000000
+Z19 !s90 -reportprogress|300|-93|-work|work|E:/RegistradoraPratica/RegistradoraPratica.vhd|
+Z20 !s107 E:/RegistradoraPratica/RegistradoraPratica.vhd|
+!i113 1
+R11
+R12
+Abehavioral
+R14
+R2
+R3
+DEx4 work 19 registradorapratica 0 22 GVm5R1X<0G@[??>D<FO1W3
+l62
+L23
+Vi8UQ2:7]C7X<BT`6@]O^o1
+!s100 T94KAK>oIbY7ZTT4e[HHC1
+R6
+31
+R17
+!i10b 1
+R18
+R19
+R20
+!i113 1
+R11
+R12
+Eregistradorapratica_tb
+Z21 w1736331194
+R14
+R2
+R3
+R0
+Z22 8E:/RegistradoraPratica/RegistradoraPratica_tb.vhd
+Z23 FE:/RegistradoraPratica/RegistradoraPratica_tb.vhd
+l0
+L6
+VeKfQZBn5I3GeL9D0Yehjj2
+!s100 EMzh;dT]I3MjIHk_D_Z^U3
+R6
+31
+Z24 !s110 1736332233
+!i10b 1
+R8
+Z25 !s90 -reportprogress|300|-93|-work|work|E:/RegistradoraPratica/RegistradoraPratica_tb.vhd|
+Z26 !s107 E:/RegistradoraPratica/RegistradoraPratica_tb.vhd|
+!i113 1
+R11
+R12
+Abehavioral
+R14
+R2
+R3
+DEx4 work 22 registradorapratica_tb 0 22 eKfQZBn5I3GeL9D0Yehjj2
+l45
+L9
+VRh5ldkOafZOFG?Zc`RTlm2
+!s100 KZYc3Le?;cm^Zf=ozTckh2
+R6
+31
+R24
+!i10b 1
+R8
+R25
+R26
+!i113 1
+R11
+R12
