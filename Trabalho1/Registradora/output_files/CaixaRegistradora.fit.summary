@@ -1,0 +1,18 @@
+Fitter Status : Successful - Fri Dec 20 04:56:01 2024
+Quartus Prime Version : 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+Revision Name : CaixaRegistradora
+Top-level Entity Name : CaixaRegistradora
+Family : MAX 10
+Device : 10M50DAF484C7G
+Timing Models : Final
+Total logic elements : 2,532 / 49,760 ( 5 % )
+    Total combinational functions : 2,531 / 49,760 ( 5 % )
+    Dedicated logic registers : 65 / 49,760 ( < 1 % )
+Total registers : 65
+Total pins : 46 / 360 ( 13 % )
+Total virtual pins : 0
+Total memory bits : 0 / 1,677,312 ( 0 % )
+Embedded Multiplier 9-bit elements : 4 / 288 ( 1 % )
+Total PLLs : 0 / 4 ( 0 % )
+UFM blocks : 0 / 1 ( 0 % )
+ADC blocks : 0 / 2 ( 0 % )

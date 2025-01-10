@@ -1,0 +1,6 @@
+add 20
+sub 05
+add 10
+sub 05
+add 05
+sub 15

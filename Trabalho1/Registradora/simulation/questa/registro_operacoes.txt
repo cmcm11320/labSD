@@ -1,0 +1,12 @@
+Operacao: add 20 Total: 20 Hora: 1200
+Operacao: sub 5 Total: 15 Hora: 1200
+Operacao: add 10 Total: 25 Hora: 1200
+Operacao: sub 5 Total: 20 Hora: 1200
+Operacao: add 5 Total: 25 Hora: 1200
+Operacao: sub 15 Total: 10 Hora: 1200
+Operacao: sub 20 Total: 20 Hora: 1200
+Operacao: invalida 5 Total: 15 Hora: 1200
+Operacao: sub 10 Total: 25 Hora: 1200
+Operacao: invalida 5 Total: 20 Hora: 1200
+Operacao: sub 5 Total: 25 Hora: 1200
+Operacao: invalida 15 Total: 10 Hora: 1200

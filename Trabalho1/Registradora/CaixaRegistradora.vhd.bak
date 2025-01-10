@@ -1,0 +1,142 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+
+-- Biblioteca adicional para simulação de arquivos
+use STD.TEXTIO.ALL;
+
+-- Módulo principal
+entity CaixaRegistradora is
+    Port (
+        CLK          : in  STD_LOGIC;               -- Clock principal
+        RESET        : in  STD_LOGIC;               -- Reset do sistema
+        KEYBOARD_IN  : in  STD_LOGIC_VECTOR(7 downto 0); -- Entrada do teclado
+        SEG_DISPLAY  : out STD_LOGIC_VECTOR(6 downto 0); -- Saída para display de 7 segmentos
+        CURRENT_TIME : out STD_LOGIC_VECTOR(15 downto 0)  -- Hora atual em formato HHMM
+    );
+end CaixaRegistradora;
+
+architecture Behavioral of CaixaRegistradora is
+
+    -- Estados da máquina de estados
+    type STATE_TYPE is (IDLE, PROCESS_INPUT, UPDATE_DISPLAY, WRITE_LOG);
+    signal CURRENT_STATE, NEXT_STATE : STATE_TYPE := IDLE;
+
+    -- Sinais internos
+    signal clock_divider : integer := 0;
+    signal CLK_1HZ       : STD_LOGIC := '0';  -- Clock de 1 Hz para o relógio
+
+    signal reg_value     : integer := 0;      -- Valor total da caixa registradora
+    signal keyboard_val  : integer := 0;     -- Valor lido do teclado
+    signal operation     : STD_LOGIC_VECTOR(1 downto 0); -- Tipo de operação ("00" = add, "01" = sub)
+
+    signal current_time  : integer := 1200;  -- Horário inicial 12:00
+
+    -- Variáveis para leitura e escrita de arquivos
+    file input_file  : text open read_mode is "operacoes.txt"; -- Arquivo de entrada
+    file output_file : text open write_mode is "registro_operacoes.txt"; -- Arquivo de saída
+
+    variable line_in     : line;  -- Linha lida do arquivo
+    variable line_out    : line;  -- Linha a ser escrita no arquivo
+    variable read_op     : string(1 to 4); -- Operação lida ("add" ou "sub")
+    variable read_value  : integer;        -- Valor lido do arquivo
+
+    -- Módulo: Divisor de Clock
+begin
+    process(CLK)
+    begin
+        if rising_edge(CLK) then
+            if clock_divider = 50000000 then  -- Considerando um clock de 50 MHz
+                clock_divider <= 0;
+                CLK_1HZ <= not CLK_1HZ;
+            else
+                clock_divider <= clock_divider + 1;
+            end if;
+        end if;
+    end process;
+
+    -- Módulo: Atualização do Horário
+    process(CLK_1HZ, RESET)
+    begin
+        if RESET = '1' then
+            current_time <= 1200;
+        elsif rising_edge(CLK_1HZ) then
+            if current_time mod 100 = 59 then
+                if current_time / 100 = 23 then
+                    current_time <= 0;
+                else
+                    current_time <= (current_time / 100 + 1) * 100;
+                end if;
+            else
+                current_time <= current_time + 1;
+            end if;
+        end if;
+    end process;
+
+    -- Módulo: Máquina de Estados
+    process(CLK, RESET)
+    begin
+        if RESET = '1' then
+            CURRENT_STATE <= IDLE;
+        elsif rising_edge(CLK) then
+            CURRENT_STATE <= NEXT_STATE;
+        end if;
+    end process;
+
+    -- Módulo: Lógica de Processamento de Estados
+    process(CURRENT_STATE, KEYBOARD_IN, operation)
+    begin
+        case CURRENT_STATE is
+            when IDLE =>
+                -- Verifica se há dados no arquivo de entrada
+                if not endfile(input_file) then
+                    readline(input_file, line_in);
+                    read(line_in, read_op);
+                    read(line_in, read_value);
+                    -- Decodifica a operação
+                    if read_op = "add" then
+                        operation <= "00";
+                    elsif read_op = "sub" then
+                        operation <= "01";
+                    end if;
+                    keyboard_val <= read_value;
+                    NEXT_STATE <= PROCESS_INPUT;
+                else
+                    NEXT_STATE <= IDLE;
+                end if;
+
+            when PROCESS_INPUT =>
+                -- Processa o valor e operação
+                if operation = "00" then
+                    reg_value <= reg_value + keyboard_val;
+                elsif operation = "01" then
+                    reg_value <= reg_value - keyboard_val;
+                end if;
+                NEXT_STATE <= UPDATE_DISPLAY;
+
+            when UPDATE_DISPLAY =>
+                -- Escreve no arquivo de saída o resultado
+                write(line_out, string'("Operacao: "));
+                if operation = "00" then
+                    write(line_out, string'("add "));
+                elsif operation = "01" then
+                    write(line_out, string'("sub "));
+                end if;
+                write(line_out, keyboard_val);
+                write(line_out, string'(" Total: "));
+                write(line_out, reg_value);
+                write(line_out, string'(" Hora: "));
+                write(line_out, current_time);
+                writeline(output_file, line_out);
+                NEXT_STATE <= IDLE;
+
+            when others =>
+                NEXT_STATE <= IDLE;
+        end case;
+    end process;
+
+    -- Módulo: Atualização das Saídas
+    CURRENT_TIME <= std_logic_vector(to_unsigned(current_time, 16));
+    SEG_DISPLAY <= std_logic_vector(to_unsigned(current_time, 7)); -- Exemplo simplificado
+
+end Behavioral;

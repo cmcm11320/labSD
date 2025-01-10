@@ -1,0 +1,131 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/usuario/Documents/Registradora/simulation/questa
+Ebcd_7seg
+Z1 w1732298404
+Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z3 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+R0
+Z4 8D:/usuario/Documents/Registradora/Bcd_7seg.vhd
+Z5 FD:/usuario/Documents/Registradora/Bcd_7seg.vhd
+l0
+L6
+VF7EmDPKbz?NSdVg5I?j9z1
+!s100 FU6UnbdI[_@HhS<b8FY:A1
+Z6 OV;C;10.5b;63
+31
+Z7 !s110 1734681507
+!i10b 1
+Z8 !s108 1734681507.000000
+Z9 !s90 -reportprogress|300|-93|-work|work|D:/usuario/Documents/Registradora/Bcd_7seg.vhd|
+Z10 !s107 D:/usuario/Documents/Registradora/Bcd_7seg.vhd|
+!i113 1
+Z11 o-93 -work work
+Z12 tExplicit 1 CvgOpt 0
+Awith_select_bcd7seg
+R2
+R3
+DEx4 work 8 bcd_7seg 0 22 F7EmDPKbz?NSdVg5I?j9z1
+l14
+L13
+Vmf;3ABe<zQV[S8MicoHdF0
+!s100 3lf7LLD7fo_iGNIkM`1UU3
+R6
+31
+R7
+!i10b 1
+R8
+R9
+R10
+!i113 1
+R11
+R12
+Ecaixaregistradora
+Z13 w1734681210
+Z14 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+R2
+R3
+R0
+Z15 8D:/usuario/Documents/Registradora/CaixaRegistradora.vhd
+Z16 FD:/usuario/Documents/Registradora/CaixaRegistradora.vhd
+l0
+L9
+V`mn@]LD`OL5OQdDG0aLj]0
+!s100 4g]AzRA^n:O>ln914B32C3
+R6
+31
+!s110 1734681506
+!i10b 1
+Z17 !s108 1734681506.000000
+Z18 !s90 -reportprogress|300|-93|-work|work|D:/usuario/Documents/Registradora/CaixaRegistradora.vhd|
+Z19 !s107 D:/usuario/Documents/Registradora/CaixaRegistradora.vhd|
+!i113 1
+R11
+R12
+Abehavioral
+R14
+R2
+R3
+DEx4 work 17 caixaregistradora 0 22 `mn@]LD`OL5OQdDG0aLj]0
+l61
+L21
+V3BO^hRW088gTV3N]gY;j91
+!s100 eK4b=;TkLH6bVA?MAQ`W_2
+R6
+31
+R7
+!i10b 1
+R17
+R18
+R19
+!i113 1
+R11
+R12
+Ecaixaregistradora_tb
+Z20 w1734602740
+R14
+R2
+R3
+R0
+Z21 8D:/usuario/Documents/Registradora/CaixaRegistradora_tb.vhd
+Z22 FD:/usuario/Documents/Registradora/CaixaRegistradora_tb.vhd
+l0
+L5
+Vg0L_g7576noCYdRRQVQR=1
+!s100 MoWQK1ZUoF`F:1<6fcICE1
+R6
+31
+R7
+!i10b 1
+R8
+Z23 !s90 -reportprogress|300|-93|-work|work|D:/usuario/Documents/Registradora/CaixaRegistradora_tb.vhd|
+Z24 !s107 D:/usuario/Documents/Registradora/CaixaRegistradora_tb.vhd|
+!i113 1
+R11
+R12
+Abehavioral
+R14
+R2
+R3
+DEx4 work 20 caixaregistradora_tb 0 22 g0L_g7576noCYdRRQVQR=1
+l29
+L8
+VO>CFo]5AUDPGQgbIj=81T0
+!s100 3L_1]hdaJfiKO<U2^Fam61
+R6
+31
+R7
+!i10b 1
+R8
+R23
+R24
+!i113 1
+R11
+R12
