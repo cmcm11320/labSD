@@ -7,8 +7,10 @@ entity RegistradoraPratica is
     Port (
         CLK          : in  STD_LOGIC;               -- Clock principal
         RESET        : in  STD_LOGIC;               -- Reset do sistema
+		  ENABLE_OP : in STD_LOGIC;		             --enable operations
 		  keyboard_val : in  STD_LOGIC_VECTOR(3 downto 0);
 		  operation    : in  STD_LOGIC_VECTOR(1 downto 0);
+
         SEG_DISPLAY1  : out STD_LOGIC_VECTOR(6 downto 0); -- Saída para display de 7 segmentos
 		  SEG_DISPLAY2  : out STD_LOGIC_VECTOR(6 downto 0);
 		  SEG_DISPLAY3  : out STD_LOGIC_VECTOR(6 downto 0);
@@ -17,6 +19,7 @@ entity RegistradoraPratica is
 		  SEG_DISPLAYtotal2  : out STD_LOGIC_VECTOR(6 downto 0);
 		  FINALVALOR  : out STD_LOGIC_VECTOR(7 downto 0);
         TIMER : out STD_LOGIC_VECTOR(15 downto 0)  -- Hora atual em formato HHMM
+		  
     );
 end RegistradoraPratica;
 
@@ -34,7 +37,9 @@ architecture Behavioral of RegistradoraPratica is
 	 
 	 
 	 signal reg_total     : integer := 0;
-    signal reg_value     : STD_LOGIC_VECTOR(7 downto 0) := "00000000";      -- Valor total da caixa registradora
+    signal reg_value     : STD_LOGIC_VECTOR(7 downto 0) := "00000000";
+    --signal value_tens_aaa     : STD_LOGIC_VECTOR(6 downto 0) := "0000000"; 
+	 --signal value_ones_aaa     : STD_LOGIC_VECTOR(6 downto 0) := "0000000"; 	 -- Valor total da caixa registradora
 	 signal value_tens  : integer:=0;
 	 signal value_ones  : integer:=0;
 
@@ -48,11 +53,26 @@ architecture Behavioral of RegistradoraPratica is
     signal minute_tens: integer; -- Dezena dos minutos
     signal minute_ones: integer; -- Unidade dos minutos
 	 
+	 signal operations : integer;
     signal last_operation   : STD_LOGIC_VECTOR(1 downto 0) := "00"; -- Armazena a última operação
     signal last_valor       : STD_LOGIC_VECTOR(3 downto 0) := "0000"; -- Armazena o último valor
 	 
 	 signal temp_hours  : integer := 0;
 	 signal temp_mins  : integer := 0;
+	 
+	 signal temp_ht : unsigned(3 downto 0);
+	 signal temp_ho : unsigned(3 downto 0);
+	 signal temp_mt : unsigned(3 downto 0);
+	 signal temp_mo : unsigned(3 downto 0);
+	 signal temp_vt : unsigned(3 downto 0);
+	 signal temp_vo : unsigned(3 downto 0);
+	 
+	 signal hour_tens_conversion : STD_LOGIC_VECTOR(3 downto 0) ;
+	 signal hour_ones_conversion : STD_LOGIC_VECTOR(3 downto 0) ;
+	 signal minute_tens_conversion : STD_LOGIC_VECTOR(3 downto 0) ;
+	 signal minute_ones_conversion : STD_LOGIC_VECTOR(3 downto 0) ;
+	 signal value_tens_conversion : STD_LOGIC_VECTOR(3 downto 0) ;
+	 signal value_ones_conversion : STD_LOGIC_VECTOR(3 downto 0) ;
 
 	 
 	 component Bcd_7seg is
@@ -72,7 +92,7 @@ begin
                 clock_divider <= 0;
                 CLK_1HZ <= not CLK_1HZ;
             else
-                clock_divider <= clock_divider + 1;
+                clock_divider <= clock_divider + 2;
             end if;
         end if;
     end process;
@@ -84,7 +104,7 @@ begin
                 clock_divider2 <= 0;
                 CLK_1MHZ <= not CLK_1MHZ;
             else
-                clock_divider2 <= clock_divider2 + 1;
+                clock_divider2 <= clock_divider2 + 2;
             end if;
         end if;
     end process;
@@ -102,7 +122,8 @@ begin
 			end if;
     end process;
 
-    -- Módulo: Máquina de Estados
+
+   -- Módulo: Máquina de Estados
     process(CLK_1MHZ, RESET)
     begin
         if RESET = '1' then
@@ -127,7 +148,7 @@ begin
         case CURRENT_STATE is
             when IDLE =>
                 -- Verificar se há uma nova operação habilitada
-                if (operation /= last_operation or keyboard_val /= last_valor) then
+                if (operation /= last_operation) then
                     NEXT_STATE <= PROCESS_INPUT;
                 else
                     NEXT_STATE <= IDLE;
@@ -139,8 +160,10 @@ begin
 					 
                 if operation = "01" then
                     reg_total <= reg_total + valor;
-                elsif operation = "11" then
+                elsif operation = "10" then
                     reg_total <= reg_total - valor;
+					 else
+						  reg_total <= reg_total;
                 end if;
 					 
 					 last_operation <= operation;
@@ -157,10 +180,9 @@ begin
 		  
     end process;
 
+
     -- Módulo: Atualização das Saídas
-	 
-	 --temp_hours <= integer(current_timer/60);
-	 --temp_mins <= integer(current_timer mod 60);
+
 	 
     TIMER <= std_logic_vector(to_unsigned(current_timer, 16));
 	 
@@ -178,28 +200,60 @@ begin
 	 
 	 
 	 
-	 FINALVALOR <= std_logic_vector(to_unsigned(reg_total, 8));
 	 
-	 --reg_value <= std_logic_vector(to_unsigned(reg_total, 8)); -- Valor total
+	 
+	 
+	 reg_value <= std_logic_vector(to_unsigned(reg_total, 8)); -- Valor total
 
+	 FINALVALOR <= reg_value;
+	 
+	 --reg_total <= to_integer(reg_total);
 	
+	 --value_tens <=  (reg_total/10) mod 10;
+	 --value_ones <=  (reg_total) mod 10;
+	 
 	 value_tens <=  (reg_total/10) mod 10;
-	 value_ones <=  reg_total mod 10;
+	 value_ones <=  (reg_total) mod 10;
 
 	 
+	 -- conversion
+	 
+	 temp_ht <= to_unsigned(hour_tens,4);
+	 hour_tens_conversion <= std_logic_vector(temp_ht);
+	 
+	 temp_ho <= to_unsigned(hour_ones,4);
+	 hour_ones_conversion <= std_logic_vector(temp_ho);
+	 
+	 temp_mt <= to_unsigned(minute_tens,4);
+	 minute_tens_conversion <= std_logic_vector(temp_mt);
+	 
+	 temp_mo <= to_unsigned(minute_ones,4);
+	 minute_ones_conversion <= std_logic_vector(temp_mo);
 	 
 	 
 	 
+	 
+	 
+	 
+	 
+	 temp_vt <= to_unsigned(value_tens,4);
+	 value_tens_conversion <= std_logic_vector(temp_vt);
+	 
+	 temp_vo <= to_unsigned(value_ones,4);
+	 value_ones_conversion <= std_logic_vector(temp_vo);
 	 
 	 --instancias
 	 
-	 inst_Bcd7seg1: Bcd_7seg port map (entrada=>std_logic_vector(to_unsigned(hour_tens,4)), saida=>SEG_DISPLAY1);
-	 inst_Bcd7seg2: Bcd_7seg port map (entrada=>std_logic_vector(to_unsigned(hour_ones,4)), saida=>SEG_DISPLAY2);
-	 inst_Bcd7seg3: Bcd_7seg port map (entrada=>std_logic_vector(to_unsigned(minute_tens,4)), saida=>SEG_DISPLAY3);
-	 inst_Bcd7seg4: Bcd_7seg port map (entrada=>std_logic_vector(to_unsigned(minute_ones,4)), saida=>SEG_DISPLAY4);
 	 
-	 inst_Bcd7segvalue1: Bcd_7seg port map (entrada=>std_logic_vector(to_unsigned(value_tens,4)), saida=>SEG_DISPLAYtotal1);
-	 inst_Bcd7segvalue2: Bcd_7seg port map (entrada=>std_logic_vector(to_unsigned(value_ones,4)), saida=>SEG_DISPLAYtotal2);
+	 inst_Bcd7seg1: Bcd_7seg port map (entrada=>hour_tens_conversion, saida=>SEG_DISPLAY1);
+	 inst_Bcd7seg2: Bcd_7seg port map (entrada=>hour_ones_conversion, saida=>SEG_DISPLAY2);
+	 inst_Bcd7seg3: Bcd_7seg port map (entrada=>minute_tens_conversion, saida=>SEG_DISPLAY3);
+	 inst_Bcd7seg4: Bcd_7seg port map (entrada=>minute_ones_conversion, saida=>SEG_DISPLAY4);
+	
+		  
+	 inst_Bcd7segvalue1: Bcd_7seg port map (entrada=>value_tens_conversion, saida=>SEG_DISPLAYtotal1);
+	 inst_Bcd7segvalue2: Bcd_7seg port map (entrada=>value_ones_conversion, saida=>SEG_DISPLAYtotal2);
+	 
 
 
 end Behavioral;

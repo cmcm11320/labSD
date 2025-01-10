@@ -13,6 +13,7 @@ architecture Behavioral of RegistradoraPratica_tb is
         Port (
             CLK              : in  STD_LOGIC;
             RESET            : in  STD_LOGIC;
+				ENABLE_OP        : in  STD_LOGIC;
             keyboard_val     : in  STD_LOGIC_VECTOR(3 downto 0);
             operation        : in  STD_LOGIC_VECTOR(1 downto 0);
             SEG_DISPLAY1     : out STD_LOGIC_VECTOR(6 downto 0);
@@ -28,6 +29,7 @@ architecture Behavioral of RegistradoraPratica_tb is
 
     signal CLK              : STD_LOGIC := '0';
     signal RESET            : STD_LOGIC := '0';
+	 signal ENABLE_OP        : STD_LOGIC := '0';
     signal keyboard_val     : STD_LOGIC_VECTOR(3 downto 0) := (others => '0');
     signal operation        : STD_LOGIC_VECTOR(1 downto 0) := (others => '0');
     signal SEG_DISPLAY1     : STD_LOGIC_VECTOR(6 downto 0);
@@ -48,6 +50,7 @@ begin
         port map (
             CLK              => CLK,
             RESET            => RESET,
+				ENABLE_OP        => ENABLE_OP,
             keyboard_val     => keyboard_val,
             operation        => operation,
             SEG_DISPLAY1     => SEG_DISPLAY1,
@@ -65,9 +68,9 @@ begin
     begin
         while true loop
             CLK <= '0';
-            wait for CLK_PERIOD / 2;
+            wait for CLK_PERIOD *5000000;
             CLK <= '1';
-            wait for CLK_PERIOD / 2;
+            wait for CLK_PERIOD *5000000;
         end loop;
     end process;
 
@@ -76,30 +79,35 @@ begin
     begin
         -- Reset the system
         RESET <= '1';
-        wait for 500 ns;
+        wait for 50000000 ms;
         RESET <= '0';
 
         -- Test case 1: Add 5 to the register
         keyboard_val <= "0101"; -- 5
         operation <= "01";      -- Add
-        wait for 500 ns;
+		  ENABLE_OP <= '1';
+        wait for 50000000 ms;
 
         -- Test case 2: Subtract 2 from the register
-        keyboard_val <= "0010"; -- 2
-        operation <= "11";      -- Subtract
-        wait for 500 ns;
 		  
-		  keyboard_val <= "0000"; -- 0
-        operation <= "11";      -- Subtract
-        wait for 500 ns;
+        keyboard_val <= "0010"; -- 2
+        operation <= "10";      -- Subtract
+
+        wait for 50000000 ms;
+		  
+    	  keyboard_val <= "0000"; -- 0
+        operation <= "10";      -- Subtract
+        wait for 50000000 ms;
+		  
 		  
 		  keyboard_val <= "0110"; -- 6
         operation <= "01";      -- Add
-        wait for 500 ns;
+        wait for 50000000 ms;
+		  
 		  
 		  keyboard_val <= "0100"; -- 4
-        operation <= "11";      -- Subtract
-        wait for 500 ns;
+        operation <= "10";      -- Subtract
+        wait for 50000000 ms;
 		  
 		  
 
