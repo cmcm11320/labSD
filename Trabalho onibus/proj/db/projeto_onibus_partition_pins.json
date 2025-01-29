@@ -1,0 +1,69 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "farol_DF",
+					"strict" : false
+				},
+				{
+					"name" : "farol_EF",
+					"strict" : false
+				},
+				{
+					"name" : "farol_DT",
+					"strict" : false
+				},
+				{
+					"name" : "farol_ET",
+					"strict" : false
+				},
+				{
+					"name" : "buzina",
+					"strict" : false
+				},
+				{
+					"name" : "portas",
+					"strict" : false
+				},
+				{
+					"name" : "led_parada",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "reset",
+					"strict" : false
+				},
+				{
+					"name" : "button_portas",
+					"strict" : false
+				},
+				{
+					"name" : "button_parada",
+					"strict" : false
+				},
+				{
+					"name" : "buzina_button",
+					"strict" : false
+				},
+				{
+					"name" : "VRY",
+					"strict" : false
+				},
+				{
+					"name" : "VRX[0]",
+					"strict" : false
+				},
+				{
+					"name" : "VRX[1]",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

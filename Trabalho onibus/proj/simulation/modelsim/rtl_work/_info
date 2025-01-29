@@ -1,0 +1,101 @@
+m255
+K4
+z2
+!s11e vcom 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/Aluno/Desktop/Alunos/projeto_final_onibus_aline_clara_carlos/simulation/modelsim
+Eprojeto_onibus
+Z1 w1737134512
+Z2 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
+Z3 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+Z4 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z5 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 0
+R0
+Z6 8C:/Users/Aluno/Desktop/Alunos/projeto_final_onibus_aline_clara_carlos/projeto_onibus.vhd
+Z7 FC:/Users/Aluno/Desktop/Alunos/projeto_final_onibus_aline_clara_carlos/projeto_onibus.vhd
+l0
+L6 1
+ViMzR>]z@ESFhWGNTAP0I:1
+!s100 8f?[K2Gjb<_21:dbz;n>E3
+Z8 OV;C;2020.1;71
+31
+Z9 !s110 1737135060
+!i10b 1
+Z10 !s108 1737135060.000000
+Z11 !s90 -reportprogress|300|-93|-work|work|C:/Users/Aluno/Desktop/Alunos/projeto_final_onibus_aline_clara_carlos/projeto_onibus.vhd|
+Z12 !s107 C:/Users/Aluno/Desktop/Alunos/projeto_final_onibus_aline_clara_carlos/projeto_onibus.vhd|
+!i113 1
+Z13 o-93 -work work
+Z14 tExplicit 1 CvgOpt 0
+Abehavioral
+R2
+R3
+R4
+R5
+DEx4 work 14 projeto_onibus 0 22 iMzR>]z@ESFhWGNTAP0I:1
+!i122 0
+l42
+L29 114
+Va[B8gEE8FMXEPUTPDZiLf3
+!s100 M[VO7nV?NTbB4h;G:mJ860
+R8
+31
+R9
+!i10b 1
+R10
+R11
+R12
+!i113 1
+R13
+R14
+Eprojeto_onibus_tb
+Z15 w1737135041
+R2
+R3
+R4
+R5
+!i122 1
+R0
+Z16 8C:/Users/Aluno/Desktop/Alunos/projeto_final_onibus_aline_clara_carlos/projeto_onibus_tb.vhd
+Z17 FC:/Users/Aluno/Desktop/Alunos/projeto_final_onibus_aline_clara_carlos/projeto_onibus_tb.vhd
+l0
+L6 1
+VGZmhQ@<UkbzA:ELM:;cmm2
+!s100 8fabiG`T<51>nck<=m9S72
+R8
+31
+Z18 !s110 1737135061
+!i10b 1
+Z19 !s108 1737135061.000000
+Z20 !s90 -reportprogress|300|-93|-work|work|C:/Users/Aluno/Desktop/Alunos/projeto_final_onibus_aline_clara_carlos/projeto_onibus_tb.vhd|
+!s107 C:/Users/Aluno/Desktop/Alunos/projeto_final_onibus_aline_clara_carlos/projeto_onibus_tb.vhd|
+!i113 1
+R13
+R14
+Abehavioral
+R2
+R3
+R4
+R5
+DEx4 work 17 projeto_onibus_tb 0 22 GZmhQ@<UkbzA:ELM:;cmm2
+!i122 1
+l59
+L10 131
+V^;94]Wg>_abmOCmADW45O2
+!s100 lkiV:jRUHm231a@f1LgzH2
+R8
+31
+R18
+!i10b 1
+R19
+R20
+Z21 !s107 C:/Users/Aluno/Desktop/Alunos/projeto_final_onibus_aline_clara_carlos/projeto_onibus_tb.vhd|
+!i113 1
+R13
+R14

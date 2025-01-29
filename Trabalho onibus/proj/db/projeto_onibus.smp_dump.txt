@@ -1,0 +1,7 @@
+
+State Machine - |projeto_onibus|farol_state_fsm
+Name farol_state_fsm.LUZ_RE farol_state_fsm.SETA_ESQUERDA farol_state_fsm.SETA_DIREITA farol_state_fsm.IDLE 
+farol_state_fsm.IDLE 0 0 0 0 
+farol_state_fsm.SETA_DIREITA 0 0 1 1 
+farol_state_fsm.SETA_ESQUERDA 0 1 0 1 
+farol_state_fsm.LUZ_RE 1 0 0 1 

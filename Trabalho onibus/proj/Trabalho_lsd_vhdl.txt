@@ -1,0 +1,139 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity Onibus_Controller is
+    Port ( clk : in STD_LOGIC;
+           reset : in STD_LOGIC;
+           buzina_button : in STD_LOGIC;
+           button_portas : in STD_LOGIC;
+           button_parada : in STD_LOGIC;
+           ldr : in STD_LOGIC_VECTOR(9 downto 0); -- sensor LDR
+           VRX : in STD_LOGIC_VECTOR(9 downto 0); -- joystick eixo X
+           VRY : in STD_LOGIC_VECTOR(9 downto 0); -- joystick eixo Y
+           farol_DF : out STD_LOGIC;
+           farol_EF : out STD_LOGIC;
+           farol_DT : out STD_LOGIC;
+           farol_ET : out STD_LOGIC;
+           buzina : out STD_LOGIC;
+           portas : out STD_LOGIC_VECTOR(7 downto 0); -- Servo portas
+           catraca : out STD_LOGIC_VECTOR(7 downto 0); -- Servo catraca
+           led_parada : out STD_LOGIC;
+           lcd_data : out STD_LOGIC_VECTOR(7 downto 0);
+           lcd_enable : out STD_LOGIC;
+           lcd_rs : out STD_LOGIC
+           );
+end Onibus_Controller;
+
+architecture Behavioral of Onibus_Controller is
+
+    -- Definições internas
+    signal buzina_state : STD_LOGIC := '0';
+    signal portas_state : STD_LOGIC := '0';
+    signal catraca_pos : STD_LOGIC_VECTOR(7 downto 0) := (others => '0');
+    signal farol_state : STD_LOGIC_VECTOR(3 downto 0) := (others => '0');
+    signal lcd_display : STD_LOGIC_VECTOR(7 downto 0) := "00000000";
+    
+    -- Definição de variáveis para o controle do buzzer
+    signal buzina_pwm : STD_LOGIC := '0';
+    signal buzina_count : INTEGER := 0;
+    constant buzina_freq : INTEGER := 1000;  -- Frequência do buzzer (em Hz)
+    constant clk_freq : INTEGER := 50000000;  -- Frequência do clock do FPGA (50 MHz)
+    
+begin
+
+    -- Processo principal do sistema
+    process(clk, reset)
+    begin
+        if reset = '1' then
+            -- Resetando todos os estados
+            buzina_state <= '0';
+            portas_state <= '0';
+            catraca_pos <= (others => '0');
+            farol_state <= (others => '0');
+            lcd_display <= "00000000";
+            led_parada <= '0';
+            buzina_pwm <= '0';
+            buzina_count <= 0;
+        elsif rising_edge(clk) then
+            -- Controle da buzina
+            if buzina_button = '0' then
+                buzina_state <= '1';  -- Buzina acionada
+            else
+                buzina_state <= '0';  -- Buzina desligada
+            end if;
+
+            -- Geração do sinal PWM para o buzzer
+            if buzina_state = '1' then
+                -- Contador para gerar a frequência do PWM
+                if buzina_count < (clk_freq / buzina_freq) / 2 then
+                    buzina_count <= buzina_count + 1;
+                else
+                    buzina_pwm <= not buzina_pwm;  -- Alterna o estado do PWM
+                    buzina_count <= 0;
+                end if;
+            else
+                buzina_pwm <= '0';  -- Desliga o PWM quando a buzina não está acionada
+            end if;
+
+            -- Controle das portas
+            if button_portas = '0' then
+                if portas_state = '0' then
+                    -- Abrir portas
+                    portas_state <= '1';
+                    portas <= "11111111"; -- Valor para abrir as portas
+                else
+                    -- Fechar portas
+                    portas_state <= '0';
+                    portas <= "00000000"; -- Valor para fechar as portas
+                end if;
+            end if;
+
+            -- Controle da catraca (Servo)
+            if (to_integer(unsigned(ldr)) < 512) then
+                -- Abrir catraca
+                catraca_pos <= "10000000"; -- Exemplo de posição do servo para abrir
+            else
+                -- Fechar catraca
+                catraca_pos <= "00000000"; -- Exemplo de posição do servo para fechar
+            end if;
+
+            -- Controle dos faróis (Setas e luz de ré)
+            if to_integer(unsigned(VRX)) > 512 then
+                -- Setas para a direita
+                farol_state(0) <= '1'; -- Farol direito ligado
+            else
+                farol_state(0) <= '0'; -- Farol direito desligado
+            end if;
+
+            if to_integer(unsigned(VRY)) < 512 then
+                -- Setas para a esquerda
+                farol_state(1) <= '1'; -- Farol esquerdo ligado
+            else
+                farol_state(1) <= '0'; -- Farol esquerdo desligado
+            end if;
+
+            if button_parada = '0' then
+                -- Ativar LED de parada
+                led_parada <= '1';
+            else
+                led_parada <= '0';
+            end if;
+
+            -- Atualização da LCD (simulação de um display simples)
+            lcd_display <= "10101010"; -- Exemplo de dados para LCD
+            lcd_enable <= '1';
+            lcd_rs <= '1'; -- Habilitar display
+
+            -- Controle da buzina (output)
+            if buzina_pwm = '1' then
+                buzina <= '1'; -- Buzina ativada (sinal PWM)
+            else
+                buzina <= '0'; -- Buzina desativada
+            end if;
+
+        end if;
+    end process;
+
+end Behavioral;
